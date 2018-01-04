@@ -1,0 +1,13 @@
+sudo: true
+
+language: c
+
+compiler:
+  - clang
+  - gcc
+
+before_script:
+  - ./.travis.sh
+  - touch config.rpath && autoreconf -fvi && ./configure --enable-strict --enable-pedantic
+
+script: make && make check && make dist
